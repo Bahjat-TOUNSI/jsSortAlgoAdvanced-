@@ -131,7 +131,6 @@ function sort(type) {
 }
 
 function insertsort() {
-    console.log("insertsort - implement me !");
     let i = 1;
     while (i < listVille.length) {
         let distance = listVille[i].distanceFromGrenoble;
@@ -147,7 +146,21 @@ function insertsort() {
 
 
 function selectionsort() {
-    console.log("selectionsort - implement me !");
+    let n = listVille.length;
+
+    for(let lowestDistance = 0; lowestDistance < n; lowestDistance++) {
+        // Finding the smallest number in the subarray
+        let min = lowestDistance;
+        for(let nextCity = lowestDistance+1; nextCity < n; nextCity++){
+            if(listVille[nextCity].distanceFromGrenoble < listVille[min].distanceFromGrenoble) {
+                min=nextCity;
+            }
+        }
+        if (min !== lowestDistance) {
+            swap(min, lowestDistance)
+        }
+    }
+    return listVille;
 }
 
 function bubblesort() {
