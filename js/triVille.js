@@ -76,9 +76,10 @@ function distanceFromGrenoble(ville) {
         Math.sin(Δλ/2) * Math.sin(Δλ/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-    const d = R * c; // in metres
+    const distance = R * c; // in metres
 
-    return d;
+    return distance;
+
 }
 
 /**
@@ -89,8 +90,7 @@ function distanceFromGrenoble(ville) {
  * @return vrai si la ville i est plus proche
  */
 function isLess(i, j) {
-    console.log('implement me !');
-    return true;
+    return listVille[i].distanceFromGrenoble < listVille[j].distanceFromGrenoble;
 }
 
 /**
@@ -99,7 +99,9 @@ function isLess(i, j) {
  * @param {*} j 
  */
 function swap(i, j) {
-    console.log('implement me !');
+    let temp = listVille[i];
+    listVille[i] = listVille[j];
+    listVille[j] = temp;
 }
 
 function sort(type) {
@@ -130,7 +132,22 @@ function sort(type) {
 
 function insertsort() {
     console.log("insertsort - implement me !");
+    let i = 0;
+    while (i < listVille.length) {
+        let ville = listVille[i];
+        console.log(ville.distanceFromGrenoble);
+        let j = i - 1;
+        while (j >= 0 && listVille[j] > ville) {
+            console.log("there");
+            listVille[j + 1] = listVille[j];
+            j = j - 1;
+        }
+        listVille[j+1] = ville;
+        i = i + 1;
+    }
+    return listVille;
 }
+
 
 function selectionsort() {
     console.log("selectionsort - implement me !");
