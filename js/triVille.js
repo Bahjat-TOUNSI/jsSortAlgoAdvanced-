@@ -132,17 +132,14 @@ function sort(type) {
 
 function insertsort() {
     console.log("insertsort - implement me !");
-    let i = 0;
+    let i = 1;
     while (i < listVille.length) {
-        let ville = listVille[i];
-        console.log(ville.distanceFromGrenoble);
-        let j = i - 1;
-        while (j >= 0 && listVille[j] > ville) {
-            console.log("there");
-            listVille[j + 1] = listVille[j];
-            j = j - 1;
+        let distance = listVille[i].distanceFromGrenoble;
+        let j = i  ;
+        while (j > 0 && listVille[j - 1].distanceFromGrenoble > distance) {
+            swap(j, j-1)
+            j--
         }
-        listVille[j+1] = ville;
         i = i + 1;
     }
     return listVille;
