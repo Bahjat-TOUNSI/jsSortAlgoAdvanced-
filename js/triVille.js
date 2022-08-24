@@ -167,10 +167,10 @@ function bubblesort() {
     let n = listVille.length;
 
     for(let i = 0; i < n; i++) {
-        for(let j = 0; j < n-1; j++) {
+        for(let ville = 0; ville < n-1; ville++) {
             // Comparing and swapping the cities by distance
-            if(listVille[j].distanceFromGrenoble > listVille[j+1].distanceFromGrenoble){
-                swap(j,j+1)
+            if(listVille[ville].distanceFromGrenoble > listVille[ville+1].distanceFromGrenoble){
+                swap(ville,ville+1)
             }
         }
     }
