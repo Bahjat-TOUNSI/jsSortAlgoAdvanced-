@@ -102,6 +102,7 @@ function swap(i, j) {
     let temp = listVille[i];
     listVille[i] = listVille[j];
     listVille[j] = temp;
+    nbPermutation++;
 }
 
 function sort(type) {
@@ -139,7 +140,7 @@ function insertsort() {
             swap(j, j-1)
             j--
         }
-        i = i + 1;
+        i++;
     }
     return listVille;
 }
@@ -163,14 +164,28 @@ function selectionsort() {
     return listVille;
 }
 
-function bubblesort() {
-    let n = listVille.length;
+// function bubblesort() {
+//     let n = listVille.length;
+//
+//     for(let i = 0; i < n; i++) {
+//         for(let ville = 0; ville < n-1; ville++) {
+//             // Comparing and swapping the cities by distance
+//             if(listVille[ville].distanceFromGrenoble > listVille[ville+1].distanceFromGrenoble){
+//                 swap(ville,ville+1)
+//             }
+//         }
+//     }
+//     return listVille;
+// }
 
-    for(let i = 0; i < n; i++) {
-        for(let ville = 0; ville < n-1; ville++) {
-            // Comparing and swapping the cities by distance
-            if(listVille[ville].distanceFromGrenoble > listVille[ville+1].distanceFromGrenoble){
-                swap(ville,ville+1)
+function bubblesort() {
+    let swapped = true;
+    while(swapped === true){
+        swapped = false;
+        for(let i=0; i < listVille.length -1; i++){
+            if (listVille[i].distanceFromGrenoble > listVille[i+1].distanceFromGrenoble){
+                swapped = true;
+                swap( i, i + 1)
             }
         }
     }
