@@ -126,7 +126,7 @@ function sort(type) {
             heapsort();
             break;
         case 'quick':
-            quicksort();
+            quicksort(0, listVille.length - 1);
             break;
     }
 }
@@ -180,7 +180,7 @@ function selectionsort() {
 
 function bubblesort() {
     let swapped = true;
-    while(swapped === true){
+    while(swapped){
         swapped = false;
         for(let i=0; i < listVille.length -1; i++){
             if (listVille[i].distanceFromGrenoble > listVille[i+1].distanceFromGrenoble){
@@ -205,9 +205,30 @@ function heapsort() {
     console.log("heapsort - implement me !");
 }
 
-function quicksort() {
-    console.log("quicksort - implement me !");
+function quicksort(indexStart, indexEnd) {
+    if (indexEnd - indexStart > 0) {
+        // Returns pivotIndex
+        let partIndex = part(indexStart, indexEnd)
+        // Recursively apply the same logic to the left and right subarrays
+        quicksort( indexStart, partIndex - 1)
+        quicksort( partIndex + 1, indexEnd)
+    }
+}
 
+function part(indexStart, indexEnd) {
+    // Taking the last element as the pivot
+    const pivot = indexEnd
+    let j = indexStart
+    for (let i = indexStart; i <= pivot; i++) {
+        if (listVille[i].distanceFromGrenoble < listVille[pivot].distanceFromGrenoble) {
+            // Swapping elements
+            swap(i, j)
+            // Moving to next element
+            j++
+        }
+    }
+    swap(indexEnd, j)
+    return j;
 }
 
 /** MODEL */
